@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getUserMedia Example</title>
+</head>
+<body>
+    <h1>getUserMedia Example</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+
+    <script>
+        const constraints = {
+            video:true,
+            audio: false
+        };
+
+        const video = document.getElementById("video");
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error("Error accessing media devices.", error);
+            });
+    </script>
+</body>
+</html>
